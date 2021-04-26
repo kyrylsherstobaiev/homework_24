@@ -36,10 +36,12 @@ getMoney
 	.then(
 		function (data) {
 
-			let enterCurr = prompt("Enter USD, EUR, UAH, BIF, AOA:", "").toUpperCase();
+			let currencyArray = Object.keys(data);
 
-			while (!data[enterCurr]) {
-				enterCurr = prompt("Enter currency again USD, EUR, UAH, BIF, AOA:", "").toUpperCase();
+			let enterCurr = prompt(`Enter currency ${currencyArray.join(', ')}:`, `${currencyArray[0]}`).toUpperCase();
+
+			while (currencyArray.indexOf(enterCurr) === -1) {
+				enterCurr = prompt(`Enter currency again ${currencyArray.join(', ')}:`, `${currencyArray[0]}`).toUpperCase();
 			}
 
 			for (let key in data) {
@@ -61,10 +63,10 @@ getMoney
 				}
 			}
 
-			let entertext = prompt("Enter currency of cash", "").toUpperCase();
+			let entertext = prompt(`Enter currency of cash ${currencyUserBankArray.join(', ')}`, `${currencyUserBankArray[0]}`).toUpperCase();
 
 			while (currencyUserBankArray.indexOf(entertext) === -1) {
-				entertext = prompt(`Enter currency correctly USD, EUR`, "").toUpperCase();
+				entertext = prompt(`Enter currency again ${currencyUserBankArray.join(', ')}`, `${currencyUserBankArray[0]}`).toUpperCase();
 			}
 
 			let entersummcash,
